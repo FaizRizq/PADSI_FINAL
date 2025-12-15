@@ -1,0 +1,103 @@
+body {
+  font-size: .875rem;
+}
+
+.bi {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -0.125em;
+}
+
+/*
+ * Header
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .nav-item.dropdown {
+  position: static;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Di belakang navbar */
+  overflow-x: hidden;
+  overflow-y: auto; /* Scroll sidebar jika kontennya panjang */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  min-height: calc(100vh - 48px); /* 100% tinggi layar dikurangi tinggi header */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  z-index: 100;
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    min-height: auto;
+    padding-top: 0;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Nav link Sidebar */
+#sidebar .nav-link {
+  font-weight: 500;
+  background-color: #BF092F; /* Latar belakang putih */
+  color: #f8f9fa;           /* Teks warna gelap (hitam) */
+    
+    /* Transisi agar perpindahan warna mulus 0.2 detik */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#sidebar .nav-link .bi {
+  color: #f8f9fa;
+  margin-right: 8px;
+  transition: color 0.2s;
+}
+
+/* Link Aktif */
+#sidebar .nav-link:hover,
+#sidebar .nav-link.active {
+  background-color: #f8f9fa; /* Latar belakang merah (kebalikan) */
+  color: #212529;           /* Teks warna putih (kebalikan) */
+}
+
+/* .sidebar .nav-link:hover {
+  color: #2470dc;
+} */
+
+#sidebar .nav-link:hover .bi,
+#sidebar .nav-link.active .bi {
+    color: #BF092F;           /* Ikon warna putih (kebalikan) */
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+}
+
+/*
+ * Konten Utama
+ */
