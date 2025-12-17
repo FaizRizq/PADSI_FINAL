@@ -10,37 +10,28 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        // Membuat tabel 'Loyalitas' sesuai ERD
-        Schema::create('Loyalitas', function (Blueprint $table) {
-            
-            // PK: ID_Loyalitas
-            $table->id('ID_Loyalitas');
+{
+    // Ubah 'Loyalitas' menjadi 'loyalitas' (huruf kecil)
+    Schema::create('loyalitas', function (Blueprint $table) {
+        
+        // PK: ID_Loyalitas (Ini sudah benar secara kode, akan jadi Auto-Increment)
+        $table->id('ID_Loyalitas');
 
-            // FK: ID_Pelanggan
-            // Asumsi me-refer ke 'ID_Pelanggan' di tabel 'pelanggans'
-            $table->unsignedBigInteger('ID_Pelanggan');
+        // FK: ID_Pelanggan
+        $table->unsignedBigInteger('ID_Pelanggan');
 
-            // FK: ID_Transaksi
-            // Asumsi me-refer ke 'ID_Transaksi' di tabel 'transaksis'
-            $table->unsignedBigInteger('ID_Transaksi');
+        // FK: ID_Transaksi
+        $table->unsignedBigInteger('ID_Transaksi');
 
-            // Atribut lainnya
-            $table->string('Nama_Pelanggan');
-            $table->string('NoTelp_Pelanggan')->nullable(); // Nomor HP sebaiknya string
-            $table->integer('Jumlah_Transaksi')->default(0); // Untuk menghitung jumlah
-            $table->decimal('Jumlah_Diskon', 15, 2)->default(0); // 'decimal' terbaik untuk mata uang
+        // Atribut lainnya
+        $table->string('Nama_Pelanggan');
+        $table->string('NoTelp_Pelanggan')->nullable();
+        $table->integer('Jumlah_Transaksi')->default(0);
+        $table->decimal('Jumlah_Diskon', 15, 2)->default(0);
 
-            // Standard Laravel timestamps
-            $table->timestamps();
-
-            // === Definisi Foreign Key ===
-            // (Baris ini bisa di-uncomment jika Anda sudah punya tabel `pelanggans` dan `transaksis`)
-
-            // $table->foreign('ID_Pelanggan')->references('ID_Pelanggan')->on('pelanggans')->onDelete('cascade');
-            // $table->foreign('ID_Transaksi')->references('ID_Transaksi')->on('transaksis')->onDelete('set null');
-        });
-    }
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
