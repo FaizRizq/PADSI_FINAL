@@ -28,7 +28,7 @@ return new class extends Migration
             // Atribut lainnya
             $table->string('Nama_Pelanggan');
             $table->string('NoTelp_Pelanggan')->nullable(); // Nomor HP sebaiknya string
-            $table->integer('Total_Transaksi')->default(0); // Untuk menghitung jumlah
+            $table->integer('Jumlah_Transaksi')->default(0); // Untuk menghitung jumlah
             $table->decimal('Jumlah_Diskon', 15, 2)->default(0); // 'decimal' terbaik untuk mata uang
 
             // Standard Laravel timestamps

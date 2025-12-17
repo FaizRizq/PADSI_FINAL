@@ -10,35 +10,26 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        // Membuat tabel 'Pelanggan' sesuai ERD
-        Schema::create('Pelanggan', function (Blueprint $table) {
-            
-            // PK: ID_Pelanggan
-            $table->id('ID_Pelanggan');
+{
+    // Gunakan huruf kecil 'pelanggan' agar sinkron dengan query seeder
+    Schema::create('pelanggan', function (Blueprint $table) {
+        
+        // PK: ID_Pelanggan
+        $table->id('ID_Pelanggan');
 
-            // FK: ID_Loyalitas
-            // Asumsi relasi 1-ke-1 dengan tabel 'Loyalitas'
-            // Kita buat 'nullable' dan 'unique' agar tidak error
-            // Atribut lainnya
-            $table->string('ID_Loyalitas', 50)->nullable();
-            $table->string('Nama_Pelanggan');
-            $table->string('NoTelp_Pelanggan')->nullable(); // Nomor HP sebaiknya string
-            $table->integer('Jumlah_Transaksi')->default(0); // Atau tipe data yang sesuai
-            
+        // Kolom ID_Loyalitas (Sudah benar tanpa ->change())
+        $table->string('ID_Loyalitas', 50)->nullable();
+        
+        // Atribut lainnya
+        $table->string('Nama_Pelanggan');
+        $table->string('NoTelp_Pelanggan')->nullable();
+        
+        // Pastikan kolom ini juga ada jika seeder memanggilnya di tabel ini
+        $table->integer('Jumlah_Transaksi')->default(0); 
 
-            // Standard Laravel timestamps
-            $table->timestamps();
-
-            // === Definisi Foreign Key ===
-            // (Bisa di-uncomment jika tabel 'Loyalitas' sudah ada SEBELUM ini)
-
-            // $table->foreign('ID_Loyalitas')
-            //       ->references('ID_Loyalitas')
-            //       ->on('Loyalitas')
-            //       ->onDelete('set null'); // Jika data loyalitas dihapus, FK di sini jadi null
-        });
-    }
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
