@@ -20,10 +20,12 @@ return new class extends Migration
             // FK: ID_Loyalitas
             // Asumsi relasi 1-ke-1 dengan tabel 'Loyalitas'
             // Kita buat 'nullable' dan 'unique' agar tidak error
-             $table->string('ID_Loyalitas', 50)->nullable()->change();
             // Atribut lainnya
+            $table->string('ID_Loyalitas', 50)->nullable();
             $table->string('Nama_Pelanggan');
             $table->string('NoTelp_Pelanggan')->nullable(); // Nomor HP sebaiknya string
+            $table->integer('Jumlah_Transaksi')->default(0); // Atau tipe data yang sesuai
+            
 
             // Standard Laravel timestamps
             $table->timestamps();
